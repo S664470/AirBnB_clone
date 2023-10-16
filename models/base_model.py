@@ -25,4 +25,4 @@ class BaseModel:
         return obj_dict
 
     def __str__(self):
-        return f"[class_name] (self.id) {self.__dict__}"
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
