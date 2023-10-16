@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
 """Shell console for the application"""
 import cmd
+import shlex
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -16,14 +23,13 @@ class HBNBCommand(cmd.Cmd):
         """
         if not arg:
             print("** class name missing **")
-        else:
-            try:
-
-                instance = globals()[arg]
-                instance.save()
-                print(instance.id)
-            except KeyError:
-                print('** class doesn\'t exist **')
+            return
+        try:
+            obj = eval(arg)()
+            obj.save()
+            print(obj.id)
+        except NameError:
+            print("** class doesn't exist **")
 
     def do_show(self, arg):
         """Prints the string representation of an instance based on the class
