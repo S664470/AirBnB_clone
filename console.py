@@ -5,7 +5,7 @@ import fileinput
 """PYTHON COMMAND INTERPRETER"""
 
 
-class HBNBcmd(cmd.Cmd):
+class HBNBcommand(cmd.Cmd):
     """command process"""
     prompt = "(hbnb) "
 
@@ -14,7 +14,8 @@ class HBNBcmd(cmd.Cmd):
         pass
 
     def do_quit(self, line):
-        """command to handel exit status"""
+        """Quit command to exit the program
+        """
         return True
 
     def do_EOF(self, line):
@@ -43,4 +44,4 @@ class HBNBcmd(cmd.Cmd):
 
 
 if __name__ == '__main__':
-    HBNBcmd().cmdloop()
+    HBNBcommand().cmdloop()
